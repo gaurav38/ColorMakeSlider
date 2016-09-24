@@ -10,16 +10,26 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet var redSliderControl: UISlider!
+    @IBOutlet var greenSliderControl: UISlider!
+    @IBOutlet var blueSliderControl: UISlider!
+    @IBOutlet var colorView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        calculateColor()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    @IBAction func calculateColor() {
+        if self.redSliderControl == nil {
+            return
+        }
+        
+        let r: CGFloat = CGFloat(redSliderControl.value)
+        let g: CGFloat = CGFloat(greenSliderControl.value)
+        let b: CGFloat = CGFloat(blueSliderControl.value)
+        
+        colorView.backgroundColor = UIColor(red: r, green: g, blue: b, alpha: 1)
     }
-
-
 }
 
